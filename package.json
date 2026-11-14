@@ -1,0 +1,13 @@
+{
+  "name": "qr-menu-prototype",
+  "version": "1.0.0",
+  "description": "Table aware QR menu prototype",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "qr": "node tools/make-qr.mjs"
+  },
+  "devDependencies": {
+    "qrcode": "^1.5.4"
+  }
+}

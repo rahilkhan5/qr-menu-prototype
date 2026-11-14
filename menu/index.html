@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Menu</title>
+<meta name="theme-color" content="#eef1ea">
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600&family=Hanken+Grotesk:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+<link rel="modulepreload" href="data.js">
+<script type="module" src="app.js"></script>
+</head>
+<body>
+<a class="skip" href="#menu">Skip to menu</a>
+
+<header class="top">
+  <p class="brand"><span id="brand-name">&nbsp;</span><small id="brand-tagline"></small></p>
+  <div class="stub" id="stub" hidden>
+    <h1 id="table-title"></h1>
+    <p id="table-meta"></p>
+  </div>
+</header>
+
+<main>
+  <section class="pick" id="pick" aria-labelledby="pick-title" hidden></section>
+  <nav class="cats" id="cats" aria-label="Menu sections"></nav>
+  <div id="menu" tabindex="-1"></div>
+  <noscript><p class="notice">This menu needs JavaScript. Please turn it on in your browser, or ask our team for a printed menu.</p></noscript>
+</main>
+
+<footer class="foot">
+  <p>Prices include service. Tell our team about any allergies before you order.</p>
+</footer>
+</body>
+</html>

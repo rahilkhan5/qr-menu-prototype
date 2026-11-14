@@ -1,0 +1,144 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>QR menu prototype</title>
+<meta name="theme-color" content="#eef1ea">
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600&family=Hanken+Grotesk:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --paper: #eef1ea;
+  --paper-deep: #dfe5d9;
+  --ink: #18201a;
+  --ink-soft: #55615a;
+  --accent: #c2410c;
+  --line: #cdd5c8;
+  --display: "Bricolage Grotesque", system-ui, sans-serif;
+  --body: "Hanken Grotesk", system-ui, sans-serif;
+}
+*, *::before, *::after { box-sizing: border-box; }
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font: 400 1rem/1.55 var(--body);
+  -webkit-font-smoothing: antialiased;
+}
+.wrap {
+  max-width: 980px;
+  margin: 0 auto;
+  padding: clamp(32px, 7vw, 80px) 20px 56px;
+}
+h1, h2, p { margin: 0; }
+h1 {
+  max-width: 14ch;
+  font: 600 clamp(2.5rem, 9vw, 4.5rem) / 1 var(--display);
+  letter-spacing: -0.03em;
+  text-wrap: balance;
+}
+h1 em { font-style: normal; color: var(--accent); }
+.lede {
+  max-width: 52ch;
+  margin-top: 20px;
+  color: var(--ink-soft);
+  font-size: 1.125rem;
+}
+.tables {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 18px;
+  margin: clamp(32px, 6vw, 56px) 0 0;
+  padding: 0;
+  list-style: none;
+}
+.tent {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 26px 22px 22px;
+  background: #fff;
+  border-radius: 20px;
+  text-align: center;
+  box-shadow: 0 22px 40px -28px rgba(24, 32, 26, 0.5);
+}
+.tent h2 {
+  font: 600 1.75rem/1.1 var(--display);
+  letter-spacing: -0.02em;
+}
+.tent p { margin-top: 4px; color: var(--ink-soft); font-size: 0.9375rem; }
+.tent img {
+  display: block;
+  width: min(100%, 220px);
+  height: auto;
+  margin: 16px 0 18px;
+}
+.tent a {
+  display: inline-block;
+  padding: 11px 20px;
+  border-radius: 999px;
+  background: var(--ink);
+  color: var(--paper);
+  font-weight: 600;
+  text-decoration: none;
+  transition: background 0.2s ease-out;
+}
+.tent a:hover { background: var(--accent); }
+a:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+.notes {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 8px 40px;
+  margin: clamp(40px, 7vw, 64px) 0 0;
+}
+.notes div { padding: 16px 0; border-top: 1px solid var(--line); }
+.notes dt { font-weight: 600; }
+.notes dd { margin: 4px 0 0; color: var(--ink-soft); }
+.notes a { color: var(--accent); }
+footer { margin-top: 40px; color: var(--ink-soft); font-size: 0.875rem; }
+@media (prefers-reduced-motion: reduce) { .tent a { transition: none; } }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <h1>Scan a table, <em>see its menu</em></h1>
+    <p class="lede">Three sample table codes. Point a phone camera at one and the menu opens in the browser with the right table already filled in. No app to install.</p>
+  </header>
+
+  <main>
+    <ul class="tables">
+      <li class="tent">
+        <h2>Table 1</h2>
+        <p>Window side, seats 2</p>
+        <img src="qr/table-1.svg" alt="QR code for table 1" width="220" height="220">
+        <a href="menu/?table=1">Open table 1</a>
+      </li>
+      <li class="tent">
+        <h2>Table 2</h2>
+        <p>Main hall, seats 4</p>
+        <img src="qr/table-2.svg" alt="QR code for table 2" width="220" height="220">
+        <a href="menu/?table=2">Open table 2</a>
+      </li>
+      <li class="tent">
+        <h2>Table 3</h2>
+        <p>Terrace, seats 6</p>
+        <img src="qr/table-3.svg" alt="QR code for table 3" width="220" height="220">
+        <a href="menu/?table=3">Open table 3</a>
+      </li>
+    </ul>
+
+    <dl class="notes">
+      <div><dt>Each code carries its table</dt><dd>The link ends in <code>?table=3</code>, and the page shows that table and its recommended dish.</dd></div>
+      <div><dt>A wrong code fails gently</dt><dd>Try <a href="menu/?table=99">a table that does not exist</a> or <a href="menu/">no table at all</a>. Guests still get the menu.</dd></div>
+      <div><dt>One file holds the menu</dt><dd>Dishes, prices, photos and tables all live in <code>menu/data.js</code>, ready to swap for a real data source.</dd></div>
+    </dl>
+  </main>
+
+  <footer>Prototype by Rahil. Sample restaurant and dishes for demonstration only.</footer>
+</div>
+</body>
+</html>
